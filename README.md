@@ -12,7 +12,7 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 
 ### CRUD - EndPoints
 
-### Secretárias
+### Secretárias:
 
 - Criação;
 - Consulta;
@@ -20,7 +20,7 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 - Remoção;
 - Listagem;
 
-### Funcionários
+### Funcionários:
 
 - Criação;
 - Consulta;
@@ -28,11 +28,11 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 - Remoção;
 - Listagem;
 
-### Projetos
+### Projetos:
 
 - Criação;
 - Consulta;
 - Alteração;
 - Listagem;
 
-### Modelagem
+### Modelagem:
