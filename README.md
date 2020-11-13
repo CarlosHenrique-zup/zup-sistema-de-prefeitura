@@ -86,3 +86,9 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 - IFuncionarioService;
 - IProjetoService;
 - ISecretariaService;
+
+## Postman - Collections
+- CREAT
+- READ
+- UPDATE
+- DELETE
