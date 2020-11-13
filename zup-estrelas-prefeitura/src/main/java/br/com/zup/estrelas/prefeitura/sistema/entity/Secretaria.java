@@ -24,33 +24,26 @@ public class Secretaria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idSecretaria;
 
-	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Area area;
 
-	@Column(name = "orcamento_projetos", nullable = false)
+	@Column(name = "orcamento_projetos")
 	private Double orcamentoProjetos;
 
-	@Column(name = "orcamento_folha", nullable = false)
+	@Column(name = "orcamento_folha")
 	private Double orcamentoFolha;
 
-	@Column(nullable = false)
 	private String telefone;
 
-	@Column(nullable = false)
 	private String endereco;
 
-	@Column(nullable = false)
 	private String site;
 
-	@Column(nullable = false)
 	private String email;
 
-	@Column
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "secretaria")
 	private List<Funcionario> funcionarios;
 
-	
 	@OneToMany(mappedBy="secretaria")
 	private List<Projeto> projetos;
 
@@ -117,20 +110,20 @@ public class Secretaria {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-//
-//	public List<Funcionario> getFuncionarios() {
-//		return funcionarios;
-//	}
-//
-//	public void setFuncionarios(List<Funcionario> funcionarios) {
-//		this.funcionarios = funcionarios;
-//	}
-//
-//	public List<Projeto> getProjetos() {
-//		return projetos;
-//	}
-//
-//	public void setProjetos(List<Projeto> projetos) {
-//		this.projetos = projetos;
-//	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+
+	public List<Projeto> getProjetos() {
+		return projetos;
+	}
+
+	public void setProjetos(List<Projeto> projetos) {
+		this.projetos = projetos;
+	}
 }

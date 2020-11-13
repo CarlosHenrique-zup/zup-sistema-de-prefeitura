@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 public class FuncionarioDTO {
 
-	private Long idFuncionario;
-	
 	private String nome;
 	
 	private Double salario;
@@ -17,14 +15,6 @@ public class FuncionarioDTO {
 	private Boolean concursado;
 	
 	private LocalDate dataAdmissao;
-
-	public Long getIdFuncionario() {
-		return idFuncionario;
-	}
-
-	public void setIdFuncionario(Long idFuncionario) {
-		this.idFuncionario = idFuncionario;
-	}
 
 	public String getNome() {
 		return nome;

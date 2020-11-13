@@ -1,14 +1,8 @@
 package br.com.zup.estrelas.prefeitura.sistema.dto;
 
-import java.util.List;
-
-import br.com.zup.estrelas.prefeitura.sistema.entity.Funcionario;
-import br.com.zup.estrelas.prefeitura.sistema.entity.Projeto;
 import br.com.zup.estrelas.prefeitura.sistema.enums.Area;
 
 public class SecretariaDTO {
-
-	private Long idSecretaria;
 	
 	private Area area;
 	
@@ -23,18 +17,6 @@ public class SecretariaDTO {
 	private String site;
 	
 	private String email;
-	
-	private List<Funcionario> funcionarios;
-	
-	private List<Projeto> projetos;
-
-	public Long getIdSecretaria() {
-		return idSecretaria;
-	}
-
-	public void setIdSecretaria(Long idSecretaria) {
-		this.idSecretaria = idSecretaria;
-	}
 
 	public Area getArea() {
 		return area;
@@ -92,19 +74,4 @@ public class SecretariaDTO {
 		this.email = email;
 	}
 
-	public List<Funcionario> getFuncionarios() {
-		return funcionarios;
-	}
-
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
-	}
-
-	public List<Projeto> getProjetos() {
-		return projetos;
-	}
-
-	public void setProjetos(List<Projeto> projetos) {
-		this.projetos = projetos;
-	}
 }
