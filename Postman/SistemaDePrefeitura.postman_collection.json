@@ -68,6 +68,17 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Secretaria - ReadByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -135,6 +146,17 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Funcionario - ReadByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -147,8 +169,25 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\"  : \"projeto 2\",\r\n    \"descricao\" : \"projetoTeste\",\r\n    \"custo\" : 100.0,\r\n    \"dataInicio\" : \"2010-02-12\",\r\n    \"dataEntrega\" : \"2020-11-10\",\r\n    \"concluido\" : false,\r\n    \"idSecretaria\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/projetos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projetos"
+							]
 						}
 					},
 					"response": []
