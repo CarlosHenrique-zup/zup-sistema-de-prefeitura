@@ -40,6 +40,7 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 
 ## Modelagem:
 - [X] Diagrama de Classes
+- [X] Diagrama Lógico
 
 ## Organização: 
 - [x] TRELLO
