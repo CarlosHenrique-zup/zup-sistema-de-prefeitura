@@ -92,3 +92,11 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 - READ
 - UPDATE
 - DELETE
+
+## Ferramentas Utilizadas:
+- Eclipse
+- Postman
+- Draw.io
+- Trello
+- MySQL Workbench
+
