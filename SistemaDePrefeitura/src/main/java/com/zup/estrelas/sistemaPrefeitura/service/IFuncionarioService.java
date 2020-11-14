@@ -1,7 +1,9 @@
 package com.zup.estrelas.sistemaPrefeitura.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.zup.estrelas.sistemaPrefeitura.dto.FuncionarioDTO;
 import com.zup.estrelas.sistemaPrefeitura.dto.MensagemDTO;
 import com.zup.estrelas.sistemaPrefeitura.entity.FuncionarioEntity;
 import com.zup.estrelas.sistemaPrefeitura.entity.SecretariaEntity;
@@ -12,7 +14,9 @@ public interface IFuncionarioService {
 
 	List<FuncionarioEntity> listaFuncionario();
 
-	MensagemDTO removeFuncionario(Long idFuncionario);
+	MensagemDTO removeFuncionario(Long idFuncionario, FuncionarioEntity funcionario);
 	
-	FuncionarioEntity buscaSecretaria(Long idFuncionario);
+	MensagemDTO alteraFuncionario(Long idFuncionario, FuncionarioDTO funcionario);
+	
+	FuncionarioEntity buscaFuncionario(Long idFuncionario);
 }

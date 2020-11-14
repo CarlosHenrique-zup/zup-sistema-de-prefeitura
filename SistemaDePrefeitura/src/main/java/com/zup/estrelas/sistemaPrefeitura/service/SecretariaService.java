@@ -14,11 +14,10 @@ import com.zup.estrelas.sistemaPrefeitura.repository.SecretariaRepository;
 public class SecretariaService implements ISecretariaService {
 
 	private static final String SECRETARIA_CADASTRADA_COM_SUCESSO = "Secretaria cadastrada com sucesso!";
-	private static final String SECRETARIA_JA_CADASTRADA = "Já possuímos essa secretaria nos nossos registros!";
-	private static final String SECRETARIA_NAO_ENCONTRADA = "Secretaria não encontrada!";
 	private static final String SECRETARIA_REMOVIDA_COM_SUCESSO = "Secretaria removida com sucesso!";
 	private static final String SECRETARIA_INEXISTENTE = "A Secretaria não existe!";
 	private static final String SECRETARIA_ALTERADA = "Secretaria alterada com sucesso!";
+	private static final String SECRETARIA_NAO_PODE_RECEBER_ID = "Não se pode inserir ID para adicionar a secretária!";
 
 	@Autowired
 	SecretariaRepository secretariaRepository;
@@ -27,13 +26,7 @@ public class SecretariaService implements ISecretariaService {
 	public MensagemDTO adicionaSecretaria(SecretariaEntity secretaria) {
 
 		if (secretaria.getIdSecretaria() != null) {
-			Optional<SecretariaEntity> secretariaOptional = secretariaRepository.findById(secretaria.getIdSecretaria());
-			SecretariaEntity secretariaEntity = secretariaOptional.get();
-			if (secretariaEntity == null) {
-				return new MensagemDTO(SECRETARIA_NAO_ENCONTRADA);
-			} else {
-				return new MensagemDTO(SECRETARIA_JA_CADASTRADA);
-			}
+			return new MensagemDTO(SECRETARIA_NAO_PODE_RECEBER_ID);
 		}
 
 		secretariaRepository.save(secretaria);
@@ -76,6 +69,10 @@ public class SecretariaService implements ISecretariaService {
 
 		return new MensagemDTO(SECRETARIA_INEXISTENTE);
 
+	}
+
+	public SecretariaEntity buscaPelaSecretaria(Long idProjeto) {
+		return secretariaRepository.findById(idProjeto).orElse(null);
 	}
 
 }

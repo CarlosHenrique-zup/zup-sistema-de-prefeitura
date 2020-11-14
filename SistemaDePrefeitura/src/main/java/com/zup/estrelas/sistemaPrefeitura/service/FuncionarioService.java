@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zup.estrelas.sistemaPrefeitura.dto.FuncionarioDTO;
 import com.zup.estrelas.sistemaPrefeitura.dto.MensagemDTO;
 import com.zup.estrelas.sistemaPrefeitura.entity.FuncionarioEntity;
 import com.zup.estrelas.sistemaPrefeitura.entity.SecretariaEntity;
@@ -16,14 +17,12 @@ import com.zup.estrelas.sistemaPrefeitura.repository.SecretariaRepository;
 public class FuncionarioService implements IFuncionarioService {
 
 	private static final String FUNCIONARIO_CADASTRADO_COM_SUCESSO = "Funcionário cadastrado com sucesso!";
-	private static final String FUNCIONARIO_NAO_DEVE_POSSUIR_ID = "Funcionário não pode possuir ID";
-	private static final String FUNCIONARIO_JA_CADASTRADO = "Funcionario já cadastrado!";
-	private static final String FUNCIONARIO_REMOVIDO_COM_SUCESSO = "Funcionário removido com sucesso!";
 	private static final String FUNCIONARIO_ALTERADO_COM_SUCESSO = "Funcionário alterado com sucesso!";
 	private static final String FUNCIONARIO_INEXISTENTE = "Funcionário Inexistente";
 	private static final String FUNCIONARIO_ACIMA_DA_FOLHA_DE_ORCAMENTO = "Funcionário acima da folha de orçamento!";
-	private static final String FUNCIONARIO_ABAIXO_DA_FOLHA_DE_ORCAMENTO = "Funcionário abaixo da folha de orçamento!";
 	private static final String SECRETARIA_INEXISTENTE = "Secretaria  inexistente!";
+	private static final String FUNCIONARIO_NAO_PODE_RECEBER_ID = "Não se pode enviar funcionário pelo ID!";
+	private static final String FUNCIONARIO_DELETADO_COM_SUCESSO = "Funcionário deletado com Sucesso!";
 
 	@Autowired
 	FuncionarioRepository funcionarioRepository;
@@ -34,24 +33,25 @@ public class FuncionarioService implements IFuncionarioService {
 	public MensagemDTO adicionaFuncionario(FuncionarioEntity funcionario) {
 
 		if (funcionario.getIdFuncionario() != null) {
-			return new MensagemDTO(FUNCIONARIO_JA_CADASTRADO);
+			return new MensagemDTO(FUNCIONARIO_NAO_PODE_RECEBER_ID);
 		}
+
 		Optional<SecretariaEntity> secretariaOptional = secretariaRepository.findById(funcionario.getIdSecretaria());
 
-		SecretariaEntity secretaria = secretariaOptional.get();
+		SecretariaEntity secretariaConsultada = secretariaOptional.get();
 
-		if (secretaria == null) {
+		if (secretariaConsultada == null) {
 			return new MensagemDTO(SECRETARIA_INEXISTENTE);
 		}
 
-		if (funcionario.getSalario() > secretaria.getOrcamentoFolha()) {
+		if (funcionario.getSalario() > secretariaConsultada.getOrcamentoFolha()) {
 			return new MensagemDTO(FUNCIONARIO_ACIMA_DA_FOLHA_DE_ORCAMENTO);
 		}
-		
-		secretaria.setOrcamentoFolha(secretaria.getOrcamentoFolha() - funcionario.getSalario());
 
-		funcionario.setSecretaria(secretaria);
-		
+		secretariaConsultada.setOrcamentoFolha(secretariaConsultada.getOrcamentoFolha() - funcionario.getSalario());
+
+		funcionario.setSecretaria(secretariaConsultada);
+
 		funcionarioRepository.save(funcionario);
 
 		return new MensagemDTO(FUNCIONARIO_CADASTRADO_COM_SUCESSO);
@@ -61,18 +61,48 @@ public class FuncionarioService implements IFuncionarioService {
 		return (List<FuncionarioEntity>) funcionarioRepository.findAll();
 	}
 
-	public MensagemDTO removeFuncionario(Long idFuncionario) {
+	public MensagemDTO removeFuncionario(Long idFuncionario, FuncionarioEntity funcionario) {
+
+		Optional<SecretariaEntity> funcionarioOptional = secretariaRepository.findById(funcionario.getIdFuncionario());
+
+		SecretariaEntity secretaria = funcionarioOptional.get();
 
 		if (funcionarioRepository.existsById(idFuncionario)) {
+
 			funcionarioRepository.deleteById(idFuncionario);
-			return new MensagemDTO(FUNCIONARIO_ALTERADO_COM_SUCESSO);
+
+			secretaria.setOrcamentoFolha(secretaria.getOrcamentoFolha() + funcionario.getSalario());
+
+			secretariaRepository.save(secretaria);
+
+			return new MensagemDTO(FUNCIONARIO_DELETADO_COM_SUCESSO);
 		}
 
 		return new MensagemDTO(FUNCIONARIO_INEXISTENTE);
 	}
 
-	public FuncionarioEntity buscaSecretaria(Long idFuncionario) {
+	public FuncionarioEntity buscaFuncionario(Long idFuncionario) {
 		return funcionarioRepository.findById(idFuncionario).orElse(null);
+	}
+
+	public MensagemDTO alteraFuncionario(Long idFuncionario, FuncionarioDTO funcionario) {
+		Optional<FuncionarioEntity> funcionarioConsultado = funcionarioRepository.findById(idFuncionario);
+
+		if (funcionarioConsultado.isPresent()) {
+
+			FuncionarioEntity funcionarioAlterado = funcionarioConsultado.get();
+
+			funcionarioAlterado.setNome(funcionario.getNome());
+			funcionarioAlterado.setSalario(funcionario.getSalario());
+			funcionarioAlterado.setFuncao(funcionario.getFuncao());
+			funcionarioAlterado.setConcursado(funcionario.getConcursado());
+			funcionarioAlterado.setDataAdmissao(funcionario.getDataAdmissao());
+
+			funcionarioRepository.save(funcionarioAlterado);
+			return new MensagemDTO(FUNCIONARIO_ALTERADO_COM_SUCESSO);
+		}
+
+		return new MensagemDTO(FUNCIONARIO_INEXISTENTE);
 	}
 
 }

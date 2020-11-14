@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zup.estrelas.sistemaPrefeitura.dto.MensagemDTO;
+import com.zup.estrelas.sistemaPrefeitura.dto.ProjetoDTO;
 import com.zup.estrelas.sistemaPrefeitura.entity.ProjetoEntity;
 import com.zup.estrelas.sistemaPrefeitura.service.IProjetoService;
 
@@ -35,11 +36,11 @@ public class ProjetoController {
 	
 	@GetMapping(path = "/{idProjeto}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ProjetoEntity buscaProjeto(@PathVariable Long idProjeto) {
-		return projetoService.buscaPeloProjeto();
+		return projetoService.buscaPeloProjeto(idProjeto);
 	}
 	
 	@PutMapping(path = "/{idProjeto}",produces = {MediaType.APPLICATION_JSON_VALUE})
-	public MensagemDTO alteraPeca(@PathVariable Long idProjeto) {
-		return projetoService.alteraProjeto(idProjeto);
+	public MensagemDTO alteraPeca(@PathVariable Long idProjeto, String descricao) {
+		return projetoService.alteraProjeto(idProjeto, descricao);
 	}
 }

@@ -29,6 +29,11 @@ public class SecretariaController {
 		return secretariaService.adicionaSecretaria(secretaria);
 	}
 	
+	@GetMapping(path = "{idSecretaria}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public SecretariaEntity buscaSecretaria(@PathVariable Long idSecretaria) {
+		return secretariaService.buscaPelaSecretaria(idSecretaria);
+	}
+	
 	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<SecretariaEntity> listaSecretaria(){
 		return secretariaService.listaSecretaria();

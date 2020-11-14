@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "funcionario")
 public class FuncionarioEntity {
@@ -27,6 +29,7 @@ public class FuncionarioEntity {
 	@Transient
 	private Long idSecretaria;
 	
+	@JsonBackReference
 	@ManyToOne
     @JoinColumn(name="idSecretaria", nullable=false)
 	private SecretariaEntity secretaria;
@@ -87,9 +90,9 @@ public class FuncionarioEntity {
 		this.dataAdmissao = dataAdmissao;
 	}
 
-	public SecretariaEntity getSecretaria() {
-		return secretaria;
-	}
+//	public SecretariaEntity getSecretaria() {
+//		return secretaria;
+//	}
 
 	public void setSecretaria(SecretariaEntity secretaria) {
 		this.secretaria = secretaria;

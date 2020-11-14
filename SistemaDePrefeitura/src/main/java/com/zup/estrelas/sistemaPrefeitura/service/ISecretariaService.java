@@ -14,6 +14,8 @@ public interface ISecretariaService {
 	
 	MensagemDTO removeSecretaria(Long idSecretaria);
 	
+	SecretariaEntity buscaPelaSecretaria(Long idProjeto);
+	
 	MensagemDTO alteraSecretaria(Long idSecretaria, SecretariaEntity secretaria);
 
 }
