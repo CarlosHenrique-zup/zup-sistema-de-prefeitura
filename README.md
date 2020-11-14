@@ -40,6 +40,7 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 
 ## Modelagem:
 - [X] Diagrama de Classes
+- [X] Diagrama Lógico
 
 ## Organização: 
 - [x] TRELLO
@@ -92,3 +93,11 @@ back-end para que futuramente o sistema seja utilizado por vários clientes de f
 - READ
 - UPDATE
 - DELETE
+
+## Ferramentas Utilizadas:
+- Eclipse
+- Postman
+- Draw.io
+- Trello
+- MySQL Workbench
+
