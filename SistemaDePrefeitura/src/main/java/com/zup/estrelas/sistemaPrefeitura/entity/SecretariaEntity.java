@@ -34,6 +34,7 @@ public class SecretariaEntity {
 	@OneToMany(mappedBy="idFuncionario",orphanRemoval = true, cascade = CascadeType.REMOVE)
 	private List<FuncionarioEntity> funcionarios;
 	
+	//FIXME: A anotação @JsonManagedReference poderia estar aqui também.
 	@OneToMany(mappedBy="idProjeto",orphanRemoval = true, cascade = CascadeType.REMOVE)
 	private List<ProjetoEntity> projetos;
 

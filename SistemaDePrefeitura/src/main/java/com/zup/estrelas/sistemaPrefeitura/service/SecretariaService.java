@@ -25,6 +25,8 @@ public class SecretariaService implements ISecretariaService {
 	@Override
 	public MensagemDTO adicionaSecretaria(SecretariaEntity secretaria) {
 
+	    //FIXME: Se usasse o DTO não ia precisar fazer issa validação.
+	    // O correto aqui seria validar a área repetida conforme a regra de negócio.
 		if (secretaria.getIdSecretaria() != null) {
 			return new MensagemDTO(SECRETARIA_NAO_PODE_RECEBER_ID);
 		}

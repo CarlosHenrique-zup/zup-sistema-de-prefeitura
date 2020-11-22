@@ -52,6 +52,7 @@ public class FuncionarioServiceTests {
 
 		FuncionarioEntity funcionario = new FuncionarioEntity();
 
+		//FIXME: O seu funcionário na criação não pode ter o ID passado, por isso o teste falha.
 		dadosDoFuncionario(funcionario);
 
 		Mockito.when(funcionarioRepository.existsById(1L)).thenReturn(false);
@@ -67,6 +68,7 @@ public class FuncionarioServiceTests {
 
 		FuncionarioEntity funcionario = new FuncionarioEntity();
 
+		//FIXME: O seu funcionário na criação não pode ter o ID passado, por isso o teste falha.
 		dadosDoFuncionario(funcionario);
 
 		Mockito.when(funcionarioRepository.existsById(1L)).thenReturn(true);
@@ -78,6 +80,8 @@ public class FuncionarioServiceTests {
 	}
 
 	@Test
+	// FIXME: Esse teste falhar é um indicativo do problema apontado
+	// na classe service.
 	public void funcionarioRemovidoComSucesso() {
 		Mockito.when(funcionarioRepository.existsById(1L)).thenReturn(true);
 
@@ -88,6 +92,8 @@ public class FuncionarioServiceTests {
 	}
 
 	@Test
+	// FIXME: Esse teste falhar é um indicativo do problema apontado
+    // na classe service.
 	public void funcionarioInexistente() {
 		Mockito.when(funcionarioRepository.existsById(1L)).thenReturn(false);
 

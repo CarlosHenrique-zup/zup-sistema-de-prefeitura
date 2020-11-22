@@ -9,6 +9,7 @@
 		<version>2.3.5.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+<!-- 	Você se esqueceu de alterar aqui o groupId e o artifactId -->
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -43,12 +44,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
+<!-- 			Removi as exclusions aqui, acredito que vc esquece de commitar seu pom pois os testes não funcionariam. -->
 		</dependency>
 	</dependencies>
 

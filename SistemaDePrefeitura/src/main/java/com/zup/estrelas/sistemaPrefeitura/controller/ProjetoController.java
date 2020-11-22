@@ -40,7 +40,11 @@ public class ProjetoController {
 	}
 	
 	@PutMapping(path = "/{idProjeto}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	//FIXME: Essa descrição vai onde? Deve criar um DTO para que seja o corpo da 
+	// requisição.
 	public MensagemDTO alteraPeca(@PathVariable Long idProjeto, String descricao) {
 		return projetoService.alteraProjeto(idProjeto, descricao);
 	}
+	
+	//FIXME: Faltou o endpoint pra concluir projeto.
 }

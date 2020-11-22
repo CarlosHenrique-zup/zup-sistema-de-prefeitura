@@ -92,6 +92,7 @@ public class ProjetoEntity {
 	}
 
 
+	//FIXME: Não deixar código comentado.
 //	public SecretariaEntity getSecretaria() {
 //		return secretaria;
 //	}
