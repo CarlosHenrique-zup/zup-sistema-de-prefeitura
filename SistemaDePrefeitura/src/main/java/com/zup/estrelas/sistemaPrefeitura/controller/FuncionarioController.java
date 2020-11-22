@@ -47,6 +47,7 @@ public class FuncionarioController {
 	}
 
 	@DeleteMapping(path = "/{idFuncionario}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	//FIXME: Você não precisa enviar a entidade aqui.
 	public MensagemDTO removeFuncionario(@PathVariable Long idFuncionario, FuncionarioEntity funcionario) {
 		return funcionarioService.removeFuncionario(idFuncionario, funcionario);
 	}

@@ -38,6 +38,8 @@ public class FuncionarioService implements IFuncionarioService {
 
 		Optional<SecretariaEntity> secretariaOptional = secretariaRepository.findById(funcionario.getIdSecretaria());
 
+	      //FIXME: Devemos utilizar o isPresent antes de realizar um Get, caso a secretaria
+        // não exista nós tomaremos um erro.
 		SecretariaEntity secretariaConsultada = secretariaOptional.get();
 
 		if (secretariaConsultada == null) {
@@ -63,8 +65,14 @@ public class FuncionarioService implements IFuncionarioService {
 
 	public MensagemDTO removeFuncionario(Long idFuncionario, FuncionarioEntity funcionario) {
 
+	    //FIXME: Será que funcionarioOptional é um bom nome de variável
+	    // para a secretaria?
+	    //FIXME: Por que você peda o id da Entidade se já tem o id direto no parâmetro? 
+	    // Não é necessário utilizar uma entidade nesse método.
 		Optional<SecretariaEntity> funcionarioOptional = secretariaRepository.findById(funcionario.getIdFuncionario());
 
+		//FIXME: Devemos utilizar o isPresent antes de realizar um Get, caso a secretaria
+		// não exista nós tomaremos um erro.
 		SecretariaEntity secretaria = funcionarioOptional.get();
 
 		if (funcionarioRepository.existsById(idFuncionario)) {
@@ -93,6 +101,8 @@ public class FuncionarioService implements IFuncionarioService {
 			FuncionarioEntity funcionarioAlterado = funcionarioConsultado.get();
 
 			funcionarioAlterado.setNome(funcionario.getNome());
+			// FIXME: Se você altera o salario de um funcionário deve refletir no
+			// orçamento da secretaria.
 			funcionarioAlterado.setSalario(funcionario.getSalario());
 			funcionarioAlterado.setFuncao(funcionario.getFuncao());
 			funcionarioAlterado.setConcursado(funcionario.getConcursado());

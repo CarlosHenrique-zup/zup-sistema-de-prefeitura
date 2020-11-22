@@ -26,6 +26,7 @@ public class SecretariaController {
 
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	public MensagemDTO adicionaSecretaria(@RequestBody SecretariaEntity secretaria) {
+	    //FIXME: Faltou usar o DTO para entrada de dados aqui.
 		return secretariaService.adicionaSecretaria(secretaria);
 	}
 	

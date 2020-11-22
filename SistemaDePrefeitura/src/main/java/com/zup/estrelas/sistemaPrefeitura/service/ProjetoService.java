@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zup.estrelas.sistemaPrefeitura.dto.MensagemDTO;
+// FIXME: Remover Imports que nao foram usados.
 import com.zup.estrelas.sistemaPrefeitura.dto.ProjetoDTO;
 import com.zup.estrelas.sistemaPrefeitura.entity.ProjetoEntity;
 import com.zup.estrelas.sistemaPrefeitura.entity.SecretariaEntity;
@@ -84,10 +85,12 @@ public class ProjetoService implements IProjetoService {
 	}
 
 	@Override
+	// FIXME: Por quê não criou o endpoint pra esse método?
 	public MensagemDTO concluirProjeto(LocalDate dataEntrega,Long idProjeto) {
 		
 		Optional<ProjetoEntity> projetoOptional = projetoRepository.findById(idProjeto);
 		
+		//FIXME: Sempre devemos verificar com o isPresent antes de usar o get.
 		ProjetoEntity projeto = projetoOptional.get();
 		
 		if(dataEntrega.isAfter(projeto.getDataInicio())) {

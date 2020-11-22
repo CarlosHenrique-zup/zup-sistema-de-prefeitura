@@ -1,5 +1,6 @@
 package com.zup.estrelas.sistemaPrefeitura.service;
 
+//FIXME: Remova os imports que não foram utilizados.
 import java.time.LocalDate;
 import java.util.List;
 

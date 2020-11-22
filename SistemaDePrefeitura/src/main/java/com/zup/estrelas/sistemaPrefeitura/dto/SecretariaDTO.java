@@ -2,6 +2,7 @@ package com.zup.estrelas.sistemaPrefeitura.dto;
 
 import com.zup.estrelas.sistemaPrefeitura.enums.Area;
 
+// FIXME: Por que não usou esse e os outros DTOs?
 public class SecretariaDTO {
 	
 	private Area area;

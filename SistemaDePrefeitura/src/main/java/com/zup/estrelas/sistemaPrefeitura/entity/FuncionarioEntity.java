@@ -27,6 +27,7 @@ public class FuncionarioEntity {
 	private Boolean concursado;
 	private LocalDate dataAdmissao;
 	@Transient
+	//FIXME: Procure pela anotação de Json para não mostrar esse campo.
 	private Long idSecretaria;
 	
 	@JsonBackReference
